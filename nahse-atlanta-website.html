@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAHSE Atlanta Chapter - Healthcare Leadership & Professional Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1B3A57;
+            --secondary: #D4A574;
+            --accent: #E8F4F8;
+            --text-dark: #2C3E50;
+            --text-light: #ECF0F1;
+            --success: #27AE60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #FAFAFA;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #2D5A7E 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #E8B896;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        section h3 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--accent);
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .mission-box, .vision-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .vision-box {
+            border-left-color: var(--success);
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .pillar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .pillar h4 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Membership Section */
+        #membership {
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            background: var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .benefit-item strong {
+            color: var(--primary);
+        }
+
+        /* Committees Section */
+        #committees {
+            background: #F5F5F5;
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .committee-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid var(--secondary);
+        }
+
+        .committee-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Events Section */
+        #events {
+            background: white;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .event-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .event-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--primary);
+            color: white;
+        }
+
+        #contact h2 {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item p {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        /* Support Section */
+        #support {
+            background: var(--accent);
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .support-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .support-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Links Section */
+        .links-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .links-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .links-section a {
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .links-section a:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            border-top: 3px solid var(--secondary);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .mission-vision, .benefits-grid, .committee-grid, .events-grid, .support-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">NAHSE Atlanta</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#committees">Committees</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#support">Support Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>NAHSE Atlanta Chapter</h1>
+            <p>Advancing Black Healthcare Leadership & Professional Excellence</p>
+            <div class="cta-buttons">
+                <a href="https://nahse.org/Web/Web/Membership/Membership.aspx?hkey=99de366f-83a3-40f7-91b5-7689e45596c1" class="btn btn-primary">Join Today</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About NAHSE</h2>
+            <div class="mission-vision">
+                <div class="mission-box">
+                    <h3>Our Mission</h3>
+                    <p>The National Association of Health Services Executives (N.A.H.S.E.) is a non-profit association of Black health care executives founded in 1968. We are committed to promoting the advancement and development of Black health care leaders and elevating the quality of health care services rendered to minority and underserved communities. NAHSE's purpose is to ensure greater participation of minority groups in the health field.</p>
+                </div>
+                <div class="vision-box">
+                    <h3>Our Vision</h3>
+                    <p>N.A.H.S.E. will be recognized globally as the premier professional membership society for Blacks in health care management. We strive to improve the health status, economic opportunities and educational advancement of the communities we serve through professional programs, workshops, educational initiatives, mentoring, scholarships, and community service projects.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Strategic Pillars</h3>
+            <div class="pillars">
+                <div class="pillar">
+                    <h4>Visibility</h4>
+                    <p>Elevating the presence and voice of Black healthcare leaders in our industry and communities</p>
+                </div>
+                <div class="pillar">
+                    <h4>Values</h4>
+                    <p>Upholding integrity, excellence, and commitment to health equity in all we do</p>
+                </div>
+                <div class="pillar">
+                    <h4>Viability</h4>
+                    <p>Ensuring sustainable growth and long-term impact of our organization</p>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <h4>Stay Connected</h4>
+                <a href="https://www.linkedin.com/company/nahse-atlanta-chapter">LinkedIn</a>
+                <a href="https://lp.constantcontactpages.com/su/rGFiKNh/NAHSEsignup">Mailing List</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership">
+        <div class="container">
+            <h2>Membership</h2>
+            <p>Join a thriving community of healthcare leaders dedicated to excellence and equity. Membership provides exclusive access to professional development, networking opportunities, and career advancement resources.</p>
+
+            <h3>Membership Benefits</h3>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <strong>Professional Development</strong>
+                    <p>Access to workshops, seminars, and training programs designed to enhance your leadership skills and industry knowledge.</p>
+                </div>
+                <div class="benefit-item">
+                    <strong>Networking Opportunities</strong>
+                    <p>Connect with peers and thought leaders in healthcare management across the Atlanta region and nationally.</p>
+                </div>
+                <div class="benefit-item">
+                    <strong>Career Growth</strong>
+                    <p>Gain access to career advancement resources, mentoring programs, and exclusive job opportunities.</p>
+                </div>
+                <div class="benefit-item">
+                    <strong>Recognition & Allyship</strong>
+                    <p>Be recognized as a valued member of a premier professional society committed to health equity.</p>
+                </div>
+            </div>
+
+            <h3>Get Involved</h3>
+            <div class="links-section">
+                <h4>Membership Options</h4>
+                <p>Choose your membership level and join today:</p>
+                <a href="https://nahse.org/Web/Web/Membership/Membership.aspx?hkey=99de366f-83a3-40f7-91b5-7689e45596c1" class="btn btn-primary">Join NAHSE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committees Section -->
+    <section id="committees">
+        <div class="container">
+            <h2>Committees & Leadership</h2>
+            <p>Get involved and make an impact by serving on one of our active committees. We welcome passionate professionals at all career levels.</p>
+
+            <div class="committee-grid">
+                <div class="committee-item">
+                    <h4>Early Careerist</h4>
+                    <p>Support and mentor early-career healthcare professionals as they launch their leadership journey.</p>
+                </div>
+                <div class="committee-item">
+                    <h4>Events & Programs</h4>
+                    <p>Plan and execute engaging events and professional development programs for our membership.</p>
+                </div>
+                <div class="committee-item">
+                    <h4>Fundraising & Sponsorship</h4>
+                    <p>Drive sustainable revenue and build partnerships with organizations aligned with our mission.</p>
+                </div>
+                <div class="committee-item">
+                    <h4>Membership & Engagement</h4>
+                    <p>Recruit new members and foster meaningful connections within our professional community.</p>
+                </div>
+                <div class="committee-item">
+                    <h4>Public Policy & Advocacy</h4>
+                    <p>Advocate for health equity policies and represent our members' interests on key healthcare issues.</p>
+                </div>
+                <div class="committee-item">
+                    <h4>Social Media & Communications</h4>
+                    <p>Amplify NAHSE's message and keep our community informed through strategic communications.</p>
+                </div>
+            </div>
+
+            <div class="links-section" style="margin-top: 2rem;">
+                <a href="#" class="btn btn-primary">Committee Sign-Up</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <h2>Events & Programming</h2>
+            <p>Join us for inspiring events that bring together healthcare leaders for networking, learning, and celebration.</p>
+
+            <h3>Signature Annual Events</h3>
+            <div class="events-grid">
+                <div class="event-card">
+                    <h4>Top Golf Outing</h4>
+                    <p>Network with peers in a fun, relaxed atmosphere at our annual golf event.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Holiday Celebration</h4>
+                    <p>Celebrate the season with NAHSE family at our festive year-end gathering.</p>
+                </div>
+            </div>
+
+            <h3>Career Opportunities</h3>
+            <div class="links-section">
+                <a href="https://careers.nahse.org/" class="btn btn-primary">Visit Career Center</a>
+                <p style="margin-top: 1rem;">Explore healthcare career opportunities curated for our community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support">
+        <div class="container">
+            <h2>Support Our Mission</h2>
+            <p>Help us advance Black healthcare leadership and support the next generation of health care executives.</p>
+
+            <div class="support-grid">
+                <div class="support-card">
+                    <h4>Scholarship Program</h4>
+                    <p>Your donation directly supports scholarships for deserving healthcare students and professionals pursuing advanced education and certifications. Make an immediate impact on the next generation of Black healthcare leaders.</p>
+                    <a href="https://www.eventbrite.com/e/nahse-atlanta-chapter-sponsorship-scholarship-donations-tickets-1977398310577?aff=oddtdtcreator" class="btn btn-primary">Donate Now</a>
+                </div>
+                <div class="support-card">
+                    <h4>Sponsorship Opportunities</h4>
+                    <p>Partner with NAHSE Atlanta and gain visibility within the healthcare leadership community. Sponsorship packages are available for organizations committed to health equity and diversity.</p>
+                    <a href="https://www.eventbrite.com/e/nahse-atlanta-chapter-sponsorship-scholarship-donations-tickets-1977398310577?aff=oddtdtcreator" class="btn btn-primary">Become a Sponsor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Questions about membership, events, or our organization? Contact us today.</p>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h4>Contact Information</h4>
+                    <p><strong>Email:</strong><br>nahseatlcommunications@gmail.com</p>
+                    <p><strong>Mailing Address:</strong><br>P.O. Box 262<br>Acworth, GA 30101</p>
+                    <p><strong>Package Delivery:</strong><br>4915 N Main Street #262<br>Acworth, GA 30101</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Connect With Us</h4>
+                    <p><a href="https://www.linkedin.com/company/nahse-atlanta-chapter" style="color: var(--secondary);">LinkedIn Profile</a></p>
+                    <p><a href="https://lp.constantcontactpages.com/su/rGFiKNh/NAHSEsignup" style="color: var(--secondary);">Subscribe to Mailing List</a></p>
+                    <p><a href="#membership" style="color: var(--secondary);">Become a Member</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NAHSE Atlanta Chapter. All rights reserved.</p>
+            <p>The National Association of Health Services Executives | Founded 1968</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Advancing health equity through Black healthcare leadership and professional excellence.</p>
+        </div>
+    </footer>
+</body>
+</html>
